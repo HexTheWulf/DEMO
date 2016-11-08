@@ -129,12 +129,22 @@ public class Main extends Application {
 
 		
 		String mailCc = "Jesse.reyna01@utrgv.edu";
-		String mailFrom = "jesse.reyna01@utrgv.edu";
-		String mailSubject = "Email from Java";
-		String mailText = "This is an email from Java";
+		
+		
+		
 
                 try {
-                    sendEmail(tfMailTo.getText(), mailCc, mailFrom, mailSubject, mailText, mailSmtpHost, userTextField.getText(), pwBox.getText(), Port, lbOutpUt);
+                    sendEmail(
+                            tfMailTo.getText(), 
+                            mailCc, 
+                            userTextField.getText(), 
+                            tfSubject.getText(), 
+                            tfTexArea.getText(), 
+                            mailSmtpHost, 
+                            userTextField.getText(), 
+                            pwBox.getText(), 
+                            Port, 
+                            lbOutpUt);
                     
                 } catch (MessagingException ex) {
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
@@ -149,7 +159,7 @@ public class Main extends Application {
         
         Scene scene = new Scene(root, 600, 500);
         
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("EMAIL");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -161,8 +171,18 @@ public class Main extends Application {
         launch(args);
     }
     
-    public static void sendEmail
-        (String to, String cc, String from, String subject, String text, String smtpHost, String username, String password, String port, Label output) throws MessagingException 
+    public static void sendEmail(
+            String to, 
+            String cc, 
+            String from, 
+            String subject, 
+            String text, 
+            String smtpHost, 
+            String username, 
+            String password, 
+            String port, 
+            Label output
+    ) throws MessagingException 
     {
         try {
                 Properties props = new Properties();
@@ -188,7 +208,7 @@ public class Main extends Application {
                 
                 BodyPart messageBodyPart = new MimeBodyPart();
 
-                messageBodyPart.setText("Here's the file");
+                messageBodyPart.setText(text);
 
                 Multipart multipart = new MimeMultipart();
 
